@@ -1,0 +1,140 @@
+/* general stuff */
+h2 {
+    color: #0b0c0f;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body { /* to make the lower boxes not be overlapped by navbar */
+    padding-top: calc(4em - 8px); /* minus default body margin */
+}
+
+* { /* not exactly sure what this does but * applies to everythiiing */
+    box-sizing: border-box;
+}
+
+/* stationary navbar */
+.navbar {
+
+    /* style */
+    color: #61a896;
+    background-color: #dfd3ea;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    /* position/shape */
+    position: fixed;
+    top: 0;
+    height: 2em;
+    left: 8px; /* in line with other boxes due to body margin */
+    right: 8px;
+
+}
+
+.navlink {
+    text-decoration: none;
+    color: #61a896;
+}
+
+.navlink:visited {
+    color: #61a896;
+}
+
+.navlink:hover {
+    color: #e6e9f2
+}
+
+.navspacer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* div containing three smaller divs */
+.container {
+    left: 0;
+    right: 0;
+}
+
+/*things applying to all three boxes */
+.boxes {
+    display: inline-block;
+    vertical-align: top;
+    height: 20em;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+    /* far-left quickborrow */
+    .quickborrow {
+
+        /* style */
+        background-color: rgb(187, 93, 93);
+        color: #031a21;
+
+        /* position/shape*/
+        width: 50%;
+
+    }
+
+    /* central accountbox */
+    .accountbox {
+
+        /* style */
+        background-color: rgb(70, 70, 202);
+        color: #f7eecd;
+        text-decoration: none;
+        line-height: 1.5em;
+        
+        /* position/shape */
+        width: 25%;
+
+    }
+
+    .accountbox:hover {
+
+        background-color: #6ba8bc;
+
+    }
+
+    #accountboxid:visited {
+        color: #f7eecd;
+    }
+
+    #accountboxid:hover {
+
+        /* do something to indicate "click me!" */
+        color: #f7eecd;
+    }
+
+    /* far-right browsebooks */
+    .browsebooks {
+
+        /* style */
+        background-color: rgb(72, 170, 72);
+        color: #e2e2e2;
+
+        /* position/shape */
+        width: 25%;
+
+    }
+    
+    .browselink {
+        text-decoration: none;
+        color: #353535;
+        
+    }
+    
+    .browselink:visited {
+        color: #353535;
+    }
+    
+    .browselink:hover {
+        color: #f2f2f2
+    }

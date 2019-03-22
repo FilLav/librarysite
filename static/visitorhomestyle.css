@@ -1,0 +1,118 @@
+/* general stuff */
+h2 {
+    color: #0b0c0f;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body { /* to make the lower boxes not be overlapped by navbar */
+    padding-top: 2rem; /* minus default body margin */
+}
+
+* { /* not exactly sure what this does but * applies to everythiiing */
+    box-sizing: border-box;
+}
+
+/* stationary navbar */
+/* PUT IT BACK HERE IF IT GOES WRONG */
+
+/* div containing three smaller divs */
+.container {
+    left: 0;
+    right: 0;
+}
+
+/*things applying to all three boxes */
+.boxes {
+    display: inline-block;
+    vertical-align: top;
+    height: 50%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+    /* far-left quickborrow */
+    .quickborrow {
+
+        /* style */
+        background-color: rgb(187, 93, 93);
+        color: #031a21;
+
+        /* position/shape*/
+        width: 50%;
+        overflow-y: scroll;
+
+    }
+
+    .available {
+
+        color: green;
+        font-weight: bold;
+
+    }
+
+    .unavailable {
+
+        color: red;
+        font-weight: bold;
+
+    }
+
+    /* central accountbox */
+    .accountbox {
+
+        /* style */
+        background-color: rgb(70, 70, 202);
+        color: #f7eecd;
+        text-decoration: none;
+        line-height: 1.5em;
+        
+        /* position/shape */
+        width: 25%;
+
+    }
+
+    .accountbox:hover {
+
+        background-color: #6ba8bc;
+
+    }
+
+    #accountboxid:visited {
+        color: #f7eecd;
+    }
+
+    #accountboxid:hover {
+
+        /* do something to indicate "click me!" */
+        color: #f7eecd;
+    }
+
+    /* far-right browsebooks */
+    .browsebooks {
+
+        /* style */
+        background-color: rgb(72, 170, 72);
+        color: #e2e2e2;
+
+        /* position/shape */
+        width: 25%;
+
+    }
+    
+    .browselink {
+        text-decoration: none;
+        color: #353535;
+        
+    }
+    
+    .browselink:visited {
+        color: #353535;
+    }
+    
+    .browselink:hover {
+        color: #f2f2f2
+    }

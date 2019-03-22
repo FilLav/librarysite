@@ -1,0 +1,38 @@
+.navbar {
+
+    /* style */
+    color: #61a896;
+    background-color: #dfd3ea;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    /* position/shape */
+    position: fixed;
+    top: 0;
+    height: 2rem;
+    left: 8px; /* in line with other boxes due to body margin */
+    right: 8px;
+
+}
+
+.navlink {
+    text-decoration: none;
+    color: #61a896;
+}
+
+.navlink:visited {
+    color: #61a896;
+}
+
+.navlink:hover {
+    color: #e6e9f2
+}
+
+.navspacer {
+    padding-left: 15px;
+    padding-right: 15px;
+}

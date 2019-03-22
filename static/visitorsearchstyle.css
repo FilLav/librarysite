@@ -1,0 +1,32 @@
+body { /* to make the lower boxes not be overlapped by navbar */
+    padding-top: 2rem; /* minus default body margin */
+}
+
+.resultslist {
+
+    /* style */
+    background-color: rgb(146, 161, 133);
+    color: #031a21;
+
+    /* position/shape*/
+    position: relative;
+    width: calc(70% - 100px);
+    height: 70%;
+    left: calc(20% - 8px);
+    overflow-y: scroll;
+
+}
+
+.available {
+
+    color: green;
+    font-weight: bold;
+
+}
+
+.unavailable {
+
+    color: red;
+    font-weight: bold;
+
+}
