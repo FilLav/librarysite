@@ -47,7 +47,7 @@ def dorefinedsearch(db):
     # compare_keyword = f'%{search_keyword}%'
 
     # results will try to match both title and author. Leave 'genre' blank for general results.
-    # Actually I want isbn to override everything (if you search by it, that should be the first result, if not the only one).
+    # CHANGEME: Actually I want isbn to override everything (if you search by it, that should be the first result, if not the only one).
     # The current setup doesn't do this... at all.
     results = db.execute("""SELECT id, title, author, isbn, imgsrc, genre, is_available from books
                         WHERE title LIKE ? AND author LIKE ? AND genre LIKE ? OR isbn =?""",
