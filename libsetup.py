@@ -1,3 +1,5 @@
+# find and eradicate CHANGEME
+
 from bottle import get, post, install, run, template, static_file, request
 from bottle_sqlite import SQLitePlugin
 install(SQLitePlugin(dbfile='libdb.db'))
@@ -12,7 +14,7 @@ def visitorhome(db):
 def visitorsearch(db):
     return template('visitorsearch')
 
-
+# to add images and stuff I think?
 @get('/static/<file:path>')
 def serve_static(file):
     return static_file(file, root='./static')
@@ -23,7 +25,7 @@ def search(db):
     search_query = request.forms.get('quicksearchbox')
     comparison_string = f'%{search_query}%'
     results = db.execute("""SELECT id, title, author, imgsrc, is_available from books WHERE title LIKE ?""", (comparison_string,)).fetchall()
-    return template('visitorhome',search_results=results) #DoNT CALL IT TEMPLATE
+    return template('visitorhome',search_results=results)
 
 # action when doing a refined search
 @post('/frontend/visitorsearch/search')
@@ -35,18 +37,18 @@ def search(db):
     compare_authors = f'%{search_authors}%'
 
     search_isbn = request.forms.get('refinedsearchisbn')
-    f'%{search_isbn}%'
 
     search_genre = request.forms.get('refinedsearchgenre')
-    f'%{search_genre}%'
 
     # presently doesn't exist. Update alongside corresponding section in visitorsearch.tpl
     # search_keyword = request.forms.get('refinedsearchkeyword')
     # f'%{search_keyword}%'
 
     results = db.execute("""SELECT id, title, author, isbn, imgsrc, genre, is_available from books
-                        WHERE title LIKE ?, author LIKE ?, isbn=?, genre=?, is_available=?""",
-                        (compare_title, compare_authors, search_isbn, search_genre, )
+                        WHERE title LIKE ?, author LIKE ?, isbn=?, genre=?""",
+                        (compare_title, compare_authors, search_isbn, search_genre))
+
+    return template('CHANGEME',search_results=results) # this template doesn't yet exist
 
 
 
@@ -57,7 +59,7 @@ def borrowbook(bookid, userid):
                     VALUES (?,?,?,?,0);
                     UPDATE books
                     SET available = 0 WHERE id = bookid;""",
-                    (bookid, userid, , )) # need "today's date" and a fixed duration
+                    (bookid, userid, CHANGEME, CHANGEME)) # need "today's date" and a fixed duration
     
 
 
