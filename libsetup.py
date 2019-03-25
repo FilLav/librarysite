@@ -2,7 +2,14 @@
 
 from bottle import get, post, install, run, template, static_file, request
 from bottle_sqlite import SQLitePlugin
-install(SQLitePlugin(dbfile='database.db'))
+
+# run dbsetup.py (which is in another folder)
+import sys
+sys.path.insert(0, 'migrations/initial')
+import dbsetup
+dbsetup
+
+install(SQLitePlugin(dbfile='migrations/initial/up.sql'))
 
 # load static /visitorhome page
 @get('/frontend/visitorhome')
@@ -55,9 +62,7 @@ def dorefinedsearch(db):
 
     return template('visitorsearch',search_results=results) # this template doesn't yet exist
 
-
-
-# action when Borrowing a book (but I don't yet know how to incorporate userid here... ? NEED TO ADD THAT)
+# action when Borrowing a book (but I don't yet know how to incorporate userid here... ? CHANGEME)
 @post('/frontend/visitorhome/borrow/<bookid>')
 def borrowbook(bookid, userid):
     db.execute("""INSERT INTO loans (book_id, borrower_id, borrowed_on, borrowing_duration, is_returned) 
@@ -66,6 +71,10 @@ def borrowbook(bookid, userid):
                     SET available = 0 WHERE id = bookid;""",
                     (bookid, userid, CHANGEME, CHANGEME)) # need "today's date" and a fixed duration
     
-
+# the 'browse' page for genre is currently a bit of a misnomer. If you want to truly browse a genre, you can do so in the search
+# page; this generates 3 random books of the genre each time it's run.
+@post('/frontend/browse/genre/<genre>')
+def browsegenre(genre):
+    db.execute("""SELECT * FROM table WHERE id IN (SELECT id FROM table ORDER BY RANDOM() LIMIT 3)""")
 
 run(host='localhost', port=8080, debug=True)

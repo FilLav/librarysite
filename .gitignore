@@ -1,5 +1,5 @@
-# folder to exclude
 .vscode/
 
-# database file
-database.db
+# things that appear after libsetup.py is called
+migrations/initial/__pycache__/
+migrations/initial/up.sql
