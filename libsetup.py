@@ -2,7 +2,7 @@
 
 from bottle import get, post, install, run, template, static_file, request
 from bottle_sqlite import SQLitePlugin
-install(SQLitePlugin(dbfile='libdb.db'))
+install(SQLitePlugin(dbfile='database.db'))
 
 # load static /visitorhome page
 @get('/frontend/visitorhome')

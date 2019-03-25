@@ -2,4 +2,4 @@
 .vscode/
 
 # database file
-libdb.db
+database.db
