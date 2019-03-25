@@ -1,0 +1,5 @@
+# folder to exclude
+.vscode/
+
+# database file
+libdb.db
