@@ -1,5 +1,5 @@
 # config
-database_file = 'up.sql'
+database_file = 'migrations/2019-03-25-initial-migration/up.sql'
 
 # database seeding
 import sqlite3
