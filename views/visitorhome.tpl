@@ -8,6 +8,7 @@
 
     <body>
 
+        <!-- standard navbar template -->
         % include('navbar.tpl')
 
         <div class="container">
@@ -20,27 +21,11 @@
                     <input id="quicksearchsubmit" name="quicksearchsubmit" type="submit">
                 </form>
 
-                <!-- after making a search, results will show up as follows: -->
+                <!-- after making a search, quicksearchresults template is called upon: -->
                 % if defined('search_results'):
-                    <ol>
-                        % for result in search_results:
-                            <li>
-                                <h3>{{result["title"]}}</h3>
-                                <p>{{result["author"]}}</p>
-                                <img height="100" width="100" src="{{result['imgsrc']}}" />
-                                % if result["is_available"]==1:
-                                    <p class="available">AVAILABLE</p>
-                                    <form name="quickborrowform" action="/borrow/{{result['id']}}" method="post">
-                                        <input id="quickborrowbutton" name="quickborrowbutton" value="Borrow!" type="submit">
-                                    </form>
-                                % else:
-                                    <p class="unavailable">UNAVAILABLE</p>
-                                % end
-                            </li>
-                        % end
-                    </ol>
+                    % include('quicksearchresults.tpl')
                 % end
-            </div><!-- comment in order to remove whitespace...
+            </div><!-- comment in order to remove weird whitespace...
 
          --><a href="/frontend/useraccount.html" class="accountbox boxes">
             <div>

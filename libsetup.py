@@ -21,7 +21,7 @@ def serve_static(file):
 
 # action when doing a quicksearch from the front page
 @post('/frontend/visitorhome/quicksearch')
-def search(db):
+def doquicksearch(db):
     search_query = request.forms.get('quicksearchbox')
     comparison_string = f'%{search_query}%'
     results = db.execute("""SELECT id, title, author, imgsrc, is_available from books WHERE title LIKE ?""", (comparison_string,)).fetchall()
@@ -29,7 +29,7 @@ def search(db):
 
 # action when doing a refined search
 @post('/frontend/visitorsearch/search')
-def search(db):
+def dorefinedsearch(db):
     search_title = request.forms.get('refinedsearchtitle')
     compare_title = f'%{search_title}%'
 
@@ -37,18 +37,20 @@ def search(db):
     compare_authors = f'%{search_authors}%'
 
     search_isbn = request.forms.get('refinedsearchisbn')
+    match_isbn = f'%{search_isbn}%'
 
     search_genre = request.forms.get('refinedsearchgenre')
+    match_genre = f'%{search_genre}%'
 
-    # presently doesn't exist. Update alongside corresponding section in visitorsearch.tpl
+    # CHANGEME: presently doesn't exist. Update alongside corresponding section in visitorsearch.tpl
     # search_keyword = request.forms.get('refinedsearchkeyword')
-    # f'%{search_keyword}%'
+    # compare_keyword = f'%{search_keyword}%'
 
     results = db.execute("""SELECT id, title, author, isbn, imgsrc, genre, is_available from books
-                        WHERE title LIKE ?, author LIKE ?, isbn=?, genre=?""",
-                        (compare_title, compare_authors, search_isbn, search_genre))
+                        WHERE title LIKE ? AND author LIKE ? AND isbn=? AND genre=?""",
+                        (compare_title, compare_authors, match_isbn, match_genre)).fetchall()
 
-    return template('CHANGEME',search_results=results) # this template doesn't yet exist
+    return template('visitorsearch',search_results=results) # this template doesn't yet exist
 
 
 
