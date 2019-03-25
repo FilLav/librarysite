@@ -3,8 +3,8 @@
 <ol>
     % for result in search_results:
         <li>
-            <h3>{{result["title"]}}</h3>
-            <p>{{result["author"]}}</p>
+            <h3 class="bookname">{{result["title"]}}</h3>
+            <p class="bookauthor">{{result["author"]}}</p>
             <img height="100" width="100" src="{{result['imgsrc']}}" />
             % if result["is_available"]==1:
                 <p class="available">AVAILABLE</p>

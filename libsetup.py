@@ -46,9 +46,12 @@ def dorefinedsearch(db):
     # search_keyword = request.forms.get('refinedsearchkeyword')
     # compare_keyword = f'%{search_keyword}%'
 
+    # results will try to match both title and author. Leave 'genre' blank for general results.
+    # Actually I want isbn to override everything (if you search by it, that should be the first result, if not the only one).
+    # The current setup doesn't do this... at all.
     results = db.execute("""SELECT id, title, author, isbn, imgsrc, genre, is_available from books
-                        WHERE title LIKE ? AND author LIKE ? AND isbn=? AND genre=?""",
-                        (compare_title, compare_authors, match_isbn, match_genre)).fetchall()
+                        WHERE title LIKE ? AND author LIKE ? AND genre LIKE ? OR isbn =?""",
+                        (compare_title, compare_authors, match_genre, match_isbn)).fetchall()
 
     return template('visitorsearch',search_results=results) # this template doesn't yet exist
 

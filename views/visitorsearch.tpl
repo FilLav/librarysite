@@ -27,6 +27,7 @@
                 <input id="refinedsearchauthors" name="refinedsearchauthors" type="text" placeholder="Author(s)" />
                 <input id="refinedsearchisbn" name="refinedsearchisbn" type="text" placeholder="ISBN" />
                 <select title="genre" id="refinedsearchgenre" name="refinedsearchgenre">
+                    <option value="">Any</option>
                     <option value="fantasy">Fantasy</option>
                     <option value="mystery">Mystery</option>
                     <option value="cooking">Cooking</option>
@@ -38,9 +39,12 @@
             </form>
         </div>
 
+        <!-- box where search results are displayed, or, if no search has been made, says so -->
         <div class="resultslist">
             % if defined('search_results'):
                 % include('refinedsearchresults.tpl')
+            % else:
+                <h2 class="searchtitle">Enter your search terms</h2>
             % end
         </div>
 
